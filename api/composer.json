@@ -26,6 +26,6 @@
   "scripts": {
     "app": "php bin/app.php --ansi",
     "lint": "find bin config public src -name \"*.php\" -print0 | xargs -0 -n1 php -l",
-    "lint2": "phplint --no-cache"
+    "lint2": "phplint"
   }
 }
