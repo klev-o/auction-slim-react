@@ -10,7 +10,8 @@ use Slim\Psr7\Response;
 
 class JsonResponse extends Response
 {
-    public function __construct($data, int $status = 200)    {
+    public function __construct($data, int $status = 200)
+    {
         parent::__construct(
             $status,
             new Headers(['Content-Type' => 'application/json']),

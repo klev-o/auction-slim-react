@@ -30,9 +30,11 @@ api-permissions:
 
 api-lint:
 	docker-compose run --rm api-php-cli composer lint
+	docker-compose run --rm api-php-cli composer cs-check
 
 api-lint2:
 	docker-compose run --rm api-php-cli composer lint2
+	docker-compose run --rm api-php-cli composer cs-check
 
 build: build-gateway build-frontend build-api
 
