@@ -1,6 +1,7 @@
 up: docker-up
 down: docker-down
 restart: down up
+check: lint2 analyze test
 lint: api-lint
 lint2: api-lint2
 analyze: api-analyze
