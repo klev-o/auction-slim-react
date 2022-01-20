@@ -8,21 +8,31 @@
          beStrictAboutTodoAnnotatedTests="true"
          cacheResultFile="var/.phpunit.result.cache"
          verbose="true">
-  <coverage processUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">src</directory>
-    </include>
-  </coverage>
-  <testsuites>
-    <testsuite name="unit">
-      <directory suffix="Test.php">tests/Unit</directory>
-    </testsuite>
-    <testsuite name="functional">
-      <directory suffix="Test.php">tests/Functional</directory>
-    </testsuite>
-  </testsuites>
-  <php>
-    <env name="APP_ENV" value="test" force="true"/>
-    <env name="APP_DEBUG" value="1" force="true"/>
-  </php>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </coverage>
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix="Test.php">src/Http/Test/Unit</directory>
+        </testsuite>
+        <testsuite name="functional">
+            <directory suffix="Test.php">tests/Functional</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <directory>src/Http/Test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <php>
+        <env name="APP_ENV" value="test" force="true"/>
+        <env name="APP_DEBUG" value="1" force="true"/>
+    </php>
 </phpunit>
