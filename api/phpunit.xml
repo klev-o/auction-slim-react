@@ -15,8 +15,11 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="default">
-      <directory suffix="Test.php">tests</directory>
+    <testsuite name="unit">
+      <directory suffix="Test.php">tests/Unit</directory>
+    </testsuite>
+    <testsuite name="functional">
+      <directory suffix="Test.php">tests/Functional</directory>
     </testsuite>
   </testsuites>
   <php>
