@@ -6,6 +6,7 @@ namespace App\Auth\Entity\User;
 
 use DateTimeImmutable;
 use DomainException;
+use ArrayObject;
 
 class User
 {
@@ -15,6 +16,7 @@ class User
     private string $passwordHash;
     private Status $status;
     private ?Token $joinConfirmToken;
+    private ArrayObject $networks;
 
     private function __construct(Id $id, DateTimeImmutable $date, Email $email, Status $status)
     {
@@ -22,6 +24,18 @@ class User
         $this->date = $date;
         $this->email = $email;
         $this->status = $status;
+        $this->networks = new ArrayObject();
+    }
+
+    public static function joinByNetwork(
+        Id $id,
+        DateTimeImmutable $date,
+        Email $email,
+        NetworkIdentity $identity
+    ): self {
+        $user = new self($id, $date, $email, Status::active());
+        $user->networks->append($identity);
+        return $user;
     }
 
     public static function requestJoinByEmail(
@@ -80,5 +94,14 @@ class User
     public function getJoinConfirmToken(): ?Token
     {
         return $this->joinConfirmToken;
+    }
+
+    /**
+     * @return NetworkIdentity[]
+     */
+    public function getNetworks(): array
+    {
+        /** @var NetworkIdentity[] */
+        return $this->networks->getArrayCopy();
     }
 }
