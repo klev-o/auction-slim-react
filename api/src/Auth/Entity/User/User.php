@@ -7,13 +7,14 @@ namespace App\Auth\Entity\User;
 use DateTimeImmutable;
 use DomainException;
 use ArrayObject;
+use App\Auth\Service\PasswordHasher;
 
 class User
 {
     private Id $id;
     private DateTimeImmutable $date;
     private Email $email;
-    private string $passwordHash;
+    private ?string $passwordHash = null;
     private Status $status;
     private ?Token $joinConfirmToken;
     private ArrayObject $networks;
@@ -92,6 +93,17 @@ class User
         $this->passwordResetToken->validate($token, $date);
         $this->passwordResetToken = null;
         $this->passwordHash = $hash;
+    }
+
+    public function changePassword(string $current, string $new, PasswordHasher $hasher): void
+    {
+        if ($this->passwordHash === null) {
+            throw new DomainException('User does not have an old password.');
+        }
+        if (!$hasher->validate($current, $this->passwordHash)) {
+            throw new DomainException('Incorrect current password.');
+        }
+        $this->passwordHash = $hasher->hash($new);
     }
 
     public function isWait(): bool
