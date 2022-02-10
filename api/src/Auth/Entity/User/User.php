@@ -7,8 +7,13 @@ namespace App\Auth\Entity\User;
 use DateTimeImmutable;
 use DomainException;
 use ArrayObject;
+use Doctrine\ORM\Mapping as ORM;
 use App\Auth\Service\PasswordHasher;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="auth_users")
+ */
 class User
 {
     private Id $id;
