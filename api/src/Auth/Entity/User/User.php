@@ -17,8 +17,14 @@ use App\Auth\Service\PasswordHasher;
 class User
 {
     private Id $id;
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
     private DateTimeImmutable $date;
     private Email $email;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     private ?string $passwordHash = null;
     private Status $status;
     private ?Token $joinConfirmToken;
