@@ -3,11 +3,16 @@
 
 declare(strict_types=1);
 
+use Doctrine\Migrations\Configuration\Configuration;
+use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
+use Doctrine\Migrations\Configuration\Migration\ExistingConfiguration;
+use Doctrine\Migrations\DependencyFactory;
+use Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration;
+use Doctrine\Migrations\Tools\Console\Command;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -24,12 +29,40 @@ $commands = $container->get('config')['console']['commands'];
 
 /** @var EntityManagerInterface $entityManager */
 $entityManager = $container->get(EntityManagerInterface::class);
-$cli->getHelperSet()->set(new EntityManagerHelper($entityManager), 'em');
+$connection = $entityManager->getConnection();
+
+$configuration = new Configuration();
+$configuration->addMigrationsDirectory('App\Data\Migration', __DIR__ . '/../src/Data/Migration');
+$configuration->setAllOrNothing(true);
+$configuration->setCheckDatabasePlatform(false);
+
+$storageConfiguration = new TableMetadataStorageConfiguration();
+$storageConfiguration->setTableName('migrations');
+
+$configuration->setMetadataStorageConfiguration($storageConfiguration);
+
+$dependencyFactory = DependencyFactory::fromConnection(
+    new ExistingConfiguration($configuration),
+    new ExistingConnection($connection)
+);
+
+$cli->addCommands(array(
+    new Command\DumpSchemaCommand($dependencyFactory),
+    new Command\ExecuteCommand($dependencyFactory),
+    new Command\GenerateCommand($dependencyFactory),
+    new Command\LatestCommand($dependencyFactory),
+    new Command\ListCommand($dependencyFactory),
+    new Command\MigrateCommand($dependencyFactory),
+    new Command\RollupCommand($dependencyFactory),
+    new Command\StatusCommand($dependencyFactory),
+    new Command\SyncMetadataCommand($dependencyFactory),
+    new Command\VersionCommand($dependencyFactory),
+));
 
 //Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
 
 foreach ($commands as $name) {
-    /** @var Command $command */
+    /** @var SymfonyCommand $command */
     $command = $container->get($name);
     $cli->add($command);
 }
