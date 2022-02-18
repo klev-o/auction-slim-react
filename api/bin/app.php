@@ -4,12 +4,13 @@
 declare(strict_types=1);
 
 use Doctrine\Migrations\Configuration\Configuration;
-use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
+use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
 use Doctrine\Migrations\Configuration\Migration\ExistingConfiguration;
 use Doctrine\Migrations\DependencyFactory;
 use Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration;
 use Doctrine\Migrations\Tools\Console\Command;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
@@ -41,10 +42,12 @@ $storageConfiguration->setTableName('migrations');
 
 $configuration->setMetadataStorageConfiguration($storageConfiguration);
 
-$dependencyFactory = DependencyFactory::fromConnection(
+$dependencyFactory = DependencyFactory::fromEntityManager(
     new ExistingConfiguration($configuration),
-    new ExistingConnection($connection)
+    new ExistingEntityManager($entityManager)
 );
+
+$cli->getHelperSet()->set(new EntityManagerHelper($entityManager), 'em');
 
 $cli->addCommands(array(
     new Command\DumpSchemaCommand($dependencyFactory),
@@ -57,9 +60,10 @@ $cli->addCommands(array(
     new Command\StatusCommand($dependencyFactory),
     new Command\SyncMetadataCommand($dependencyFactory),
     new Command\VersionCommand($dependencyFactory),
+    new Command\DiffCommand($dependencyFactory)
 ));
 
-//Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
+Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
 
 foreach ($commands as $name) {
     /** @var SymfonyCommand $command */

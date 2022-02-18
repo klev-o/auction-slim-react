@@ -34,14 +34,16 @@ return [
             '/path/to/writable/directory'
         );
 
-        $config = Setup::createAnnotationMetadataConfiguration(
-            $settings['metadata_dirs'],
+        $config = Setup::createConfiguration(
             $settings['dev_mode'],
             $settings['proxy_dir'],
             $settings['cache_dir'] ?
                 DoctrineProvider::wrap(new FilesystemAdapter('', 0, $settings['cache_dir'])) :
                 DoctrineProvider::wrap(new ArrayAdapter())
         );
+
+        $driverImpl = $config->newDefaultAnnotationDriver($settings['metadata_dirs'], false);
+        $config->setMetadataDriverImpl($driverImpl);
 
         $config->setNamingStrategy(new UnderscoreNamingStrategy());
 
