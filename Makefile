@@ -1,10 +1,11 @@
 up: docker-up
 down: docker-down
 restart: down up
-check: lint2 analyze test
+check: lint2 analyze validate-schema test
 lint: api-lint
 lint2: api-lint2
 analyze: api-analyze
+validate-schema: api-validate-schema
 test: api-test
 test-coverage: api-test-coverage
 test-unit: api-test-unit
@@ -38,6 +39,9 @@ api-composer-install:
 
 api-migrations:
 	docker-compose run --rm api-php-cli composer app migrations:migrate
+
+api-validate-schema:
+	docker-compose run --rm api-php-cli composer app orm:validate-schema
 
 api-permissions:
 	docker run --rm -v ${PWD}/api:/app -w /app alpine chmod 777 var
