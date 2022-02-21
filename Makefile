@@ -50,7 +50,7 @@ api-validate-schema:
 	docker-compose run --rm api-php-cli composer app orm:validate-schema
 
 api-permissions:
-	docker run --rm -v ${PWD}/api:/app -w /app alpine chmod 777 var
+	docker run --rm -v ${PWD}/api:/app -w /app alpine chmod 777 -R var
 
 api-lint:
 	docker-compose run --rm api-php-cli composer lint
