@@ -49,19 +49,19 @@ $dependencyFactory = DependencyFactory::fromEntityManager(
 
 $cli->getHelperSet()->set(new EntityManagerHelper($entityManager), 'em');
 
-//$cli->addCommands(array(
-//    new Command\DumpSchemaCommand($dependencyFactory),
-//    new Command\ExecuteCommand($dependencyFactory),
-//    new Command\GenerateCommand($dependencyFactory),
-//    new Command\LatestCommand($dependencyFactory),
-//    new Command\ListCommand($dependencyFactory),
-//    new Command\MigrateCommand($dependencyFactory),
-//    new Command\RollupCommand($dependencyFactory),
-//    new Command\StatusCommand($dependencyFactory),
-//    new Command\SyncMetadataCommand($dependencyFactory),
-//    new Command\VersionCommand($dependencyFactory),
-//    new Command\DiffCommand($dependencyFactory)
-//));
+$cli->addCommands(array(
+    new Command\DumpSchemaCommand($dependencyFactory),
+    new Command\ExecuteCommand($dependencyFactory),
+    new Command\GenerateCommand($dependencyFactory),
+    new Command\LatestCommand($dependencyFactory),
+    new Command\ListCommand($dependencyFactory),
+    new Command\MigrateCommand($dependencyFactory),
+    new Command\RollupCommand($dependencyFactory),
+    new Command\StatusCommand($dependencyFactory),
+    new Command\SyncMetadataCommand($dependencyFactory),
+    new Command\VersionCommand($dependencyFactory),
+    new Command\DiffCommand($dependencyFactory)
+));
 //
 //Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
 
