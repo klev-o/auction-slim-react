@@ -8,6 +8,8 @@ use App\Auth\Command\JoinByEmail\Request\Command;
 use App\Auth\Command\JoinByEmail\Request\Handler;
 use App\Http\EmptyResponse;
 use App\Http\JsonResponse;
+use App\Http\Validator\ValidationException;
+use App\Http\Validator\Validator;
 use DomainException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -18,9 +20,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class RequestAction implements RequestHandlerInterface
 {
     private Handler $handler;
-    private ValidatorInterface $validator;
+    private Validator $validator;
 
-    public function __construct(Handler $handler, ValidatorInterface $validator)
+    public function __construct(Handler $handler, Validator $validator)
     {
         $this->handler = $handler;
         $this->validator = $validator;
@@ -37,12 +39,12 @@ class RequestAction implements RequestHandlerInterface
         $command->email = $data['email'] ?? '';
         $command->password = $data['password'] ?? '';
 
-        $violations = $this->validator->validate($command);
-
-        if ($violations->count() > 0) {
+        try {
+            $this->validator->validate($command);
+        } catch (ValidationException $exception) {
             $errors = [];
             /** @var ConstraintViolationInterface $violation */
-            foreach ($violations as $violation) {
+            foreach ($exception->getViolations() as $violation) {
                 $errors[$violation->getPropertyPath()] = $violation->getMessage();
             }
             return new JsonResponse(['errors' => $errors], 422);
