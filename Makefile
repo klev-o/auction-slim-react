@@ -12,7 +12,10 @@ test-unit: api-test-unit
 test-unit-coverage: api-test-unit-coverage
 test-functional: api-test-functional api-fixtures
 test-functional-coverage: api-test-functional-coverage api-fixtures
-init: docker-down-clear api-clear frontend-clear docker-pull docker-build docker-up api-init frontend-init
+init: docker-down-clear \
+	api-clear frontend-clear \
+	docker-pull docker-build docker-up \
+	api-init frontend-init
 
 docker-up:
 	docker-compose up -d
