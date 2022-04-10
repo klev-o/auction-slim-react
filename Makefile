@@ -17,6 +17,8 @@ init: docker-down-clear \
 	docker-pull docker-build docker-up \
 	api-init frontend-init cucumber-init
 
+test-e2e: api-fixtures cucumber-e2e
+
 docker-up:
 	docker-compose up -d
 
@@ -115,6 +117,9 @@ cucumber-init: cucumber-yarn-install
 
 cucumber-yarn-install:
 	docker-compose run --rm cucumber-node-cli yarn install
+
+cucumber-e2e:
+	docker-compose run --rm cucumber-node-cli yarn e2e
 
 build: build-gateway build-frontend build-api
 
