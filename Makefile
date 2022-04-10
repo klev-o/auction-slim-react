@@ -3,7 +3,7 @@ down: docker-down
 restart: down up
 check: lint2 analyze validate-schema test
 lint: api-lint
-lint2: api-lint2 frontend-lint
+lint2: api-lint2 frontend-lint cucumber-lint
 analyze: api-analyze
 validate-schema: api-validate-schema
 test: api-test api-fixtures frontend-test
@@ -117,6 +117,12 @@ cucumber-init: cucumber-yarn-install
 
 cucumber-yarn-install:
 	docker-compose run --rm cucumber-node-cli yarn install
+
+cucumber-lint:
+	docker-compose run --rm cucumber-node-cli yarn lint
+
+cucumber-lint-fix:
+	docker-compose run --rm cucumber-node-cli yarn lint-fix
 
 cucumber-e2e:
 	docker-compose run --rm cucumber-node-cli yarn e2e
