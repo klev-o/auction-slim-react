@@ -40,7 +40,6 @@ return [
         );
 
         return $middleware;
-
     },
 
     'config' => [

@@ -37,6 +37,7 @@
     "eslint": "eslint --ext .js,.jsx src",
     "eslint-fix": "eslint --fix --ext .js,.jsx src",
     "stylelint": "stylelint \"src/**/*.css\"",
+    "stylelint-fix": "stylelint --fix \"src/**/*.css\"",
     "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
   },
   "browserslist": {

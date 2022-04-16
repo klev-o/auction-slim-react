@@ -57,7 +57,7 @@ $dependencyFactory = DependencyFactory::fromEntityManager(
 
 $cli->getHelperSet()->set(new EntityManagerHelper($entityManager), 'em');
 
-$cli->addCommands(array(
+$cli->addCommands([
     new Command\DumpSchemaCommand($dependencyFactory),
     new Command\ExecuteCommand($dependencyFactory),
     new Command\GenerateCommand($dependencyFactory),
@@ -69,7 +69,7 @@ $cli->addCommands(array(
     new Command\SyncMetadataCommand($dependencyFactory),
     new Command\VersionCommand($dependencyFactory),
     new Command\DiffCommand($dependencyFactory)
-));
+]);
 //
 //Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
 

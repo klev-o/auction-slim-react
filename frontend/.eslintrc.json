@@ -29,6 +29,7 @@
   },
   "rules": {
     "space-before-function-paren": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/no-unescaped-entities": 0
   }
 }
