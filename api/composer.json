@@ -60,6 +60,7 @@
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
     "psalm": "psalm",
+    "psalm-fix": "psalm --alter --issues=UnusedVariable,UnnecessaryVarAnnotation --dry-run",
     "test": "phpunit --colors=always",
     "test-coverage": "phpunit --colors=always --coverage-html var/test/coverage"
   }

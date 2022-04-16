@@ -12,7 +12,7 @@ pipeline {
                 sh "make init"
             }
         }
-         stage("Valid") {
+        stage("Valid") {
             steps {
                 sh "make api-validate-schema"
             }
@@ -34,6 +34,11 @@ pipeline {
                         sh "make cucumber-lint"
                     }
                 }
+            }
+        }
+        stage("Analyze") {
+            steps {
+                sh "sleep 1" //make analyze
             }
         }
         stage("Down") {
