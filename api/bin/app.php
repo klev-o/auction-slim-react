@@ -38,7 +38,6 @@ $commands = $container->get('config')['console']['commands'];
 
 /** @var EntityManagerInterface $entityManager */
 $entityManager = $container->get(EntityManagerInterface::class);
-$connection = $entityManager->getConnection();
 
 $configuration = new Configuration();
 $configuration->addMigrationsDirectory('App\Data\Migration', __DIR__ . '/../src/Data/Migration');

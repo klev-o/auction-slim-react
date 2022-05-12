@@ -30,12 +30,6 @@ return [
          */
         $settings = $container->get('config')['doctrine'];
 
-        $cache = new \Symfony\Component\Cache\Adapter\PhpFilesAdapter(
-            'doctrine_results',
-            0,
-            '/path/to/writable/directory'
-        );
-
         $config = Setup::createConfiguration(
             $settings['dev_mode'],
             $settings['proxy_dir'],
