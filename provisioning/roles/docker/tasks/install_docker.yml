@@ -40,6 +40,11 @@
       group: docker
       mode: 'u+x,g+x'
 
+-   name: Remove Docker Compose
+    file:
+      path: /usr/local/bin/docker-compose
+      state: absent
+
 -   name: Set periodic Docker prune
     cron:
       name: docker-prune
