@@ -10,17 +10,18 @@
         "lint-fix": "eslint --fix --ext .js features"
     },
     "dependencies": {
+        "@cucumber/cucumber": "^8.2.1",
         "chai": "^4.2.0",
-        "cucumber": "^6.0.5",
         "cucumber-html-reporter": "^5.2.0",
         "puppeteer": "^2.1.1"
     },
     "devDependencies": {
-        "eslint": "^6.8.0",
-        "eslint-config-standard": "^14.1.1",
+        "eslint": "^8.15.0",
+        "eslint-config-standard": "^17.0.0",
         "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-n": "^15.2.0",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.1"
+        "eslint-plugin-standard": "^5.0.0"
     }
 }
