@@ -23,16 +23,16 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <coverage processUncoveredFiles="true">
+        <include>
             <directory suffix=".php">src</directory>
-            <exclude>
-                <directory>src/Auth/Test</directory>
-                <directory>src/Frontend/Test</directory>
-                <directory>src/Http/Test</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>src/Auth/Test</directory>
+            <directory>src/Frontend/Test</directory>
+            <directory>src/Http/Test</directory>
+        </exclude>
+    </coverage>
 
     <php>
         <env name="APP_ENV" value="test" force="true"/>
