@@ -62,6 +62,6 @@
     "psalm": "psalm",
     "psalm-fix": "psalm --alter --issues=UnusedVariable,UnnecessaryVarAnnotation --dry-run",
     "test": "phpunit --colors=always",
-    "test-coverage": "phpunit --colors=always --coverage-html var/test/coverage"
+    "test-coverage": "XDEBUG_MODE=coverage phpunit --colors=always --coverage-html var/test/coverage"
   }
 }
