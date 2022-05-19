@@ -1,7 +1,7 @@
 up: docker-up
 down: docker-down
 restart: down up
-check: lint2 analyze validate-schema test
+check: lint analyze validate-schema test
 lint: api-lint
 lint2: api-lint2 frontend-lint cucumber-lint
 analyze: api-analyze
@@ -65,7 +65,7 @@ api-permissions:
 
 api-lint:
 	docker-compose run --rm api-php-cli composer lint
-	docker-compose run --rm api-php-cli composer cs-check
+	docker-compose run --rm api-php-cli composer phpcs
 
 api-lint2:
 	docker-compose run --rm api-php-cli composer lint2

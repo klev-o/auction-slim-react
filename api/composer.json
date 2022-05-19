@@ -55,11 +55,14 @@
   },
   "scripts": {
     "app": "php bin/app.php --ansi",
-    "lint": "find bin config public src -name \"*.php\" -print0 | xargs -0 -n1 php -l",
-    "lint2": "phplint",
+    "lint": "phplint",
+    "lint-old": "find bin config public src -name \"*.php\" -print0 | xargs -0 -n1 php -l",
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
-    "psalm": "psalm",
+    "psalm-old": "psalm",
+    "phpcs": "phpcs --standard=phpcs.xml",
+    "phpcbf": "phpcbf --standard=phpcs.xml",
+    "psalm": "psalm --config=psalm.xml",
     "psalm-fix": "psalm --alter --issues=UnusedVariable,UnnecessaryVarAnnotation --dry-run",
     "test": "phpunit --colors=always",
     "test-coverage": "XDEBUG_MODE=coverage phpunit --colors=always --coverage-html var/test/coverage"
