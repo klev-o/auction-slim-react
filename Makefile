@@ -23,6 +23,8 @@ init: docker-down-clear \
 	docker-pull docker-build docker-up \
 	api-init frontend-init cucumber-init
 
+update-deps: api-composer-update frontend-yarn-upgrade cucumber-yarn-upgrade restart
+
 docker-up:
 	docker-compose up -d
 
@@ -45,6 +47,9 @@ api-init: api-permissions api-composer-install api-wait-db api-migrations api-fi
 
 api-composer-install:
 	docker-compose run --rm api-php-cli composer install
+
+api-composer-update:
+	docker-compose run --rm api-php-cli composer update
 
 api-wait-db:
 	docker-compose run --rm api-php-cli wait-for-it api-postgres:5432 -t 30
@@ -103,6 +108,9 @@ frontend-init: frontend-yarn-install frontend-ready
 frontend-yarn-install:
 	docker-compose run --rm frontend-node-cli yarn install
 
+frontend-yarn-upgrade:
+	docker-compose run --rm frontend-node-cli yarn upgrade
+
 frontend-ready:
 	docker run --rm -v ${PWD}/frontend:/app -w /app alpine touch .ready
 
@@ -131,6 +139,9 @@ cucumber-init: cucumber-yarn-install
 
 cucumber-yarn-install:
 	docker-compose run --rm cucumber-node-cli yarn install
+
+cucumber-yarn-upgrade:
+	docker-compose run --rm cucumber-node-cli yarn upgrade
 
 cucumber-lint:
 	docker-compose run --rm cucumber-node-cli yarn lint
