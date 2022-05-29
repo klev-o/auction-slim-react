@@ -1,7 +1,7 @@
 up: docker-up
 down: docker-down
 restart: down up
-check: lint analyze validate-schema test
+check: lint analyze validate-schema test test-e2e
 lint: api-lint
 lint2: api-lint2 frontend-lint cucumber-lint
 analyze: api-analyze
