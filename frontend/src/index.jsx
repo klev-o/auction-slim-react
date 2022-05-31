@@ -6,9 +6,7 @@ import * as serviceWorker from './serviceWorker'
 import cookie from 'cookie'
 import { mergeFeatures } from './FeatureToggle'
 
-const defaultFeatures = {
-  WE_ARE_HERE: false,
-}
+import defaultFeatures from './features'
 
 const cookies = cookie.parse(document.cookie)
 const cookieFeatures = (cookies.features || '')
