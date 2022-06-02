@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use App\FeatureToggle\FeaturesMonologProcessor;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Monolog\Processor\ProcessorInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -15,6 +17,7 @@ return [
          *     debug:bool,
          *     stderr:bool,
          *     file:string
+         *     processors:string[]
          * } $config
          */
         $config = $container->get('config')['logger'];
@@ -31,6 +34,12 @@ return [
             $log->pushHandler(new StreamHandler($config['file'], $level));
         }
 
+        foreach ($config['processors'] as $key => $class) {
+            /** @var ProcessorInterface $processor */
+            $processor = $container->get($class);
+            $log->pushProcessor($processor);
+        }
+
         return $log;
     },
 
@@ -39,6 +48,9 @@ return [
             'debug' => (bool)getenv('APP_DEBUG'),
             'file' => null,
             'stderr' => true,
+            'processors' => [
+                FeaturesMonologProcessor::class
+            ],
         ],
     ],
 ];
