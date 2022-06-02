@@ -1,3 +1,5 @@
 .idea
 vendor
 /test.http
+/.docker-images-before
+/.docker-images-after
