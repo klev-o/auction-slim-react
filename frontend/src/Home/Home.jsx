@@ -4,8 +4,9 @@ import FeatureFlag from '../FeatureToggle'
 
 function Home() {
   return (
-    <div data-testid="home" className={styles.home}>
-      <h1>Auction Example</h1>
+    <div className={styles.home}>
+      <h1>Auction</h1>
+
       <FeatureFlag not name="WE_ARE_HERE">
         <p>We will be here soon</p>
       </FeatureFlag>
