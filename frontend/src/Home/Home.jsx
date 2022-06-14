@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './Welcome.module.css'
+import styles from './Home.module.css'
 import FeatureFlag from '../FeatureToggle'
 
-function Welcome() {
+function Home() {
   return (
-    <div data-testid="welcome" className={styles.welcome}>
+    <div data-testid="home" className={styles.home}>
       <h1>Auction Example</h1>
       <FeatureFlag not name="WE_ARE_HERE">
         <p>We will be here soon</p>
@@ -21,4 +21,4 @@ function Welcome() {
 //   features: PropTypes.array.isRequired,
 // }
 
-export default Welcome
+export default Home
