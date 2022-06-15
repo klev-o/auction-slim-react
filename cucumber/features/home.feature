@@ -11,6 +11,7 @@ Feature: View home page
     Then I see "Auction" header
     And I see "We will be here soon"
     And I do not see "We are here"
+    And I see "join-link" element
 
   Scenario: View new home page content
     Given I am a guest user
@@ -19,3 +20,10 @@ Feature: View home page
     Then I see "Auction" header
     And I do not see "We will be here soon"
     And I see "We are here"
+
+  Scenario: Click to Join
+    Given I am a guest user
+    And I have "JOIN_TO_US" feature
+    And I am on "/" page
+    When I click "join-link" element
+    Then I see "Join to Us" header
