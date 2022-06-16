@@ -5,6 +5,7 @@ Feature: View join page
     And I do not have "JOIN_TO_US" feature
     When I open "/join" page
     Then I see "Page is not found"
+    And I see "join-form" element
 
   Scenario: View join page
     Given I am a guest user
