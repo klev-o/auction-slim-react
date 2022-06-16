@@ -43,61 +43,61 @@ function JoinForm() {
         password: formData.password,
       }),
     })
-    .then((response) => {
-      if (response.ok) {
-        return response
-      }
-      throw response
-    })
-    .then(() => {
-      setSuccess('Confirm join by link in email.')
-    })
-    .catch(async (error) => {
-      if (error.status === 422) {
-        const data = await error.json()
-        setErrors(data.errors)
-        return
-      }
-
-      if (error.status) {
-        const type = error.headers.get('content-type')
-        if (type && type.includes('application/json')) {
+      .then((response) => {
+        if (response.ok) {
+          return response
+        }
+        throw response
+      })
+      .then(() => {
+        setSuccess('Confirm join by link in email.')
+      })
+      .catch(async (error) => {
+        if (error.status === 422) {
           const data = await error.json()
-          if (data.message) {
-            setError(data.message)
-            return
+          setErrors(data.errors)
+          return
+        }
+
+        if (error.status) {
+          const type = error.headers.get('content-type')
+          if (type && type.includes('application/json')) {
+            const data = await error.json()
+            if (data.message) {
+              setError(data.message)
+              return
+            }
           }
         }
-      }
 
-      if (error.status) {
-        setError(error.statusText)
-        return
-      }
+        if (error.status) {
+          setError(error.statusText)
+          return
+        }
 
-      setError(error.message)
-    })
+        setError(error.message)
+      })
   }
 
   return (
     <div data-testid="join-form" className={styles.joinForm}>
       {error ? (
-          <div className="alert error" data-testid="alert-error">
-            {error}
+        <div className="alert error" data-testid="alert-error">
+          {error}
         </div>
       ) : null}
       {success ? (
-          <div className="alert success" data-testid="alert-success">
-            {success}
-          </div>
+        <div className="alert success" data-testid="alert-success">
+          {success}
+        </div>
       ) : null}
 
       {!success ? (
-          <form className="form" method="post" onSubmit={handleSubmit}>
-            <div className={'input-row' + (errors.email ? ' has-error' : '')}>
-              <label htmlFor="email" className="input-label">
-                Email
-              </label>
+        <form className="form" method="post" onSubmit={handleSubmit}>
+          <div className={'input-row' + (errors.email ? ' has-error' : '')}>
+            <label htmlFor="email" className="input-label">
+              Email
+            </label>
             <input
               id="email"
               name="email"
@@ -106,53 +106,53 @@ function JoinForm() {
               onChange={handleChange}
               required
             />
-              {errors.email ? (
-                <div className="input-error" data-testid="violation">
-                  {errors.email}
-                </div>
-              ) : null}
-            </div>
-            <div className={'input-row' + (errors.password ? ' has-error' : '')}>
-              <label htmlFor="password" className="input-label">
-                Password
-              </label>
+            {errors.email ? (
+              <div className="input-error" data-testid="violation">
+                {errors.email}
+              </div>
+            ) : null}
+          </div>
+          <div className={'input-row' + (errors.password ? ' has-error' : '')}>
+            <label htmlFor="password" className="input-label">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            {errors.password ? (
+              <div className="input-error" data-testid="violation">
+                {errors.password}
+              </div>
+            ) : null}
+          </div>
+          <div className={'input-row' + (errors.agree ? ' has-error' : '')}>
+            <label>
               <input
-                id="password"
-                name="password"
-                type="password"
-                value={formData.password}
+                name="agree"
+                type="checkbox"
+                checked={formData.agree}
                 onChange={handleChange}
                 required
               />
-              {errors.password ? (
-                <div className="input-error" data-testid="violation">
-                  {errors.password}
-                </div>
-              ) : null}
-            </div>
-            <div className={'input-row' + (errors.agree ? ' has-error' : '')}>
-              <label>
-                <input
-                  name="agree"
-                  type="checkbox"
-                  checked={formData.agree}
-                  onChange={handleChange}
-                  required
-                />
-                <small>I agree with privacy policy</small>
-              </label>
-              {errors.agree ? (
-                <div className="input-error" data-testid="violation">
-                  {errors.agree}
-                </div>
-              ) : null}
-            </div>
-            <div className="button-row">
-              <button type="submit" data-testid="join-button">
-                Join to Us
-              </button>
-            </div>
-          </form>
+              <small>I agree with privacy policy</small>
+            </label>
+            {errors.agree ? (
+              <div className="input-error" data-testid="violation">
+                {errors.agree}
+              </div>
+            ) : null}
+          </div>
+          <div className="button-row">
+            <button type="submit" data-testid="join-button">
+              Join to Us
+            </button>
+          </div>
+        </form>
       ) : null}
     </div>
   )
