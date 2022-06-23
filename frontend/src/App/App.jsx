@@ -5,6 +5,7 @@ import Home from '../Home'
 import Join from '../Join'
 import { NotFound } from '../Error'
 import Confirm from '../Join/Confirm'
+import Success from '../Join/Success'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { FeaturesProvider } from '../FeatureToggle'
 
@@ -20,6 +21,9 @@ function App({ features }) {
             ) : null}
             {features.includes('JOIN_TO_US') ? (
               <Route exact path="/join/confirm" element={<Confirm />} />
+            ) : null}
+            {features.includes('JOIN_TO_US') ? (
+              <Route exact path="/join/success" element={<Success />} />
             ) : null}
             <Route path="*" element={<NotFound />} />
           </Routes>
