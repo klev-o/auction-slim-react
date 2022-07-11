@@ -10,8 +10,7 @@
     }
   },
   "require": {
-    "php": "^7.4",
-    "ext-json": "^7.4",
+    "php": "^8.0",
     "doctrine/annotations": "^1.13",
     "doctrine/migrations": "^3.4",
     "doctrine/orm": "^2.11",
