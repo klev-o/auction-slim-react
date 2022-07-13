@@ -9,7 +9,9 @@ use DateInterval;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Tokenizer
+ * @covers \Tokenizer
+ *
+ * @internal
  */
 class TokenizerTest extends TestCase
 {

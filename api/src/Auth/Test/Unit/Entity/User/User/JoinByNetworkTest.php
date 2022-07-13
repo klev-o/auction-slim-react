@@ -12,7 +12,9 @@ use App\Auth\Entity\User\User;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers User
+ * @covers \User
+ *
+ * @internal
  */
 class JoinByNetworkTest extends TestCase
 {

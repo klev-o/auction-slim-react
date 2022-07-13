@@ -8,7 +8,9 @@ use App\Frontend\FrontendUrlGenerator;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers FrontendUrlGenerator
+ * @covers \FrontendUrlGenerator
+ *
+ * @internal
  */
 class FrontendUrlGeneratorTest extends TestCase
 {

@@ -11,7 +11,9 @@ use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @covers User
+ * @covers \User
+ *
+ * @internal
  */
 class RequestTest extends TestCase
 {

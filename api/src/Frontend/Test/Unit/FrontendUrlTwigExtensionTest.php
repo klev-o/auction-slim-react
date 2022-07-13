@@ -11,7 +11,9 @@ use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
 /**
- * @covers FrontendUrlTwigExtension
+ * @covers \FrontendUrlTwigExtension
+ *
+ * @internal
  */
 class FrontendUrlTwigExtensionTest extends TestCase
 {

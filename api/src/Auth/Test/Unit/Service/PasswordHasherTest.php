@@ -9,7 +9,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers PasswordHasher
+ * @covers \PasswordHasher
+ *
+ * @internal
  */
 class PasswordHasherTest extends TestCase
 {

@@ -14,7 +14,9 @@ use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @covers Validator
+ * @covers \Validator
+ *
+ * @internal
  */
 class ValidatorTest extends TestCase
 {
@@ -37,8 +39,8 @@ class ValidatorTest extends TestCase
         $command = new stdClass();
 
         $origin = $this->createMock(ValidatorInterface::class);
-        $origin->expects($this->once())->method('validate')
-            ->with($this->equalTo($command))
+        $origin->expects(self::once())->method('validate')
+            ->with(self::equalTo($command))
             ->willReturn($violations = new ConstraintViolationList([
                 $this->createMock(ConstraintViolation::class),
             ]));

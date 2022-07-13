@@ -9,7 +9,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Email
+ * @covers \Email
+ *
+ * @internal
  */
 class EmailTest extends TestCase
 {

@@ -9,7 +9,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Status
+ * @covers \Status
+ *
+ * @internal
  */
 class StatusTest extends TestCase
 {

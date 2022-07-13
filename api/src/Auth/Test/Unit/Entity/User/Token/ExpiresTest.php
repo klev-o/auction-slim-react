@@ -10,7 +10,9 @@ use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @covers Token::isExpiredTo
+ * @covers \Token::isExpiredTo
+ *
+ * @internal
  */
 class ExpiresTest extends TestCase
 {

@@ -9,7 +9,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Network
+ * @covers \Network
+ *
+ * @internal
  */
 class NetworkTest extends TestCase
 {

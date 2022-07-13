@@ -13,7 +13,9 @@ use Slim\Psr7\Factory\ResponseFactory;
 use Slim\Psr7\Factory\ServerRequestFactory;
 
 /**
- * @covers ContentLanguage
+ * @covers \ContentLanguage
+ *
+ * @internal
  */
 class ContentLanguageTest extends TestCase
 {

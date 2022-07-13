@@ -10,7 +10,9 @@ use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @covers Id
+ * @covers \Id
+ *
+ * @internal
  */
 class IdTest extends TestCase
 {

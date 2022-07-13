@@ -9,7 +9,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Role
+ * @covers \Role
+ *
+ * @internal
  */
 class RoleTest extends TestCase
 {
