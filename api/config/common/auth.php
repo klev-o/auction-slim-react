@@ -34,7 +34,7 @@ return [
     'config' => [
         'auth' => [
             'token_ttl' => 'PT1H',
-        ]
+        ],
     ],
 //    JoinConfirmationSender::class => function (ContainerInterface $container): JoinConfirmationSender {
 //        /** @var Swift_Mailer $mailer */

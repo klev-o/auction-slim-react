@@ -107,7 +107,6 @@ class RequestTest extends WebTestCase
 
     public function testNotValidLang(): void
     {
-
         $response = $this->app()->handle(self::json('POST', '/v1/auth/join', [
             'email' => 'not-email',
             'password' => '',
