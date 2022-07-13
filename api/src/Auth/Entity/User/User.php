@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Auth\Entity\User;
 
+use App\Auth\Service\PasswordHasher;
 use DateTimeImmutable;
-use DomainException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use App\Auth\Service\PasswordHasher;
+use DomainException;
 
 /**
  * @ORM\Entity

@@ -11,7 +11,6 @@ use App\Http\Validator\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\Validator\ConstraintViolationInterface;
 
 class RequestAction implements RequestHandlerInterface
 {
