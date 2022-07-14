@@ -33,7 +33,6 @@ $commands = $container->get('config')['console']['commands'];
 $entityManager = $container->get(EntityManagerInterface::class);
 $cli->getHelperSet()->set(new EntityManagerHelper($entityManager), 'em');
 
-
 foreach ($commands as $name) {
     /** @var SymfonyCommand $command */
     $command = $container->get($name);
