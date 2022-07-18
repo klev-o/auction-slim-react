@@ -23,17 +23,17 @@
     "eslint-plugin-jest-dom": "^4.0.2",
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-testing-library": "^5.5.1",
     "prettier": "^2.0.4",
     "react-test-renderer": "^18.1.0",
-    "stylelint": "^13.3.0",
-    "stylelint-config-prettier": "^8.0.1",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-prettier": "^1.1.2"
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-prettier": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
