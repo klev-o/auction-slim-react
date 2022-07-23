@@ -7,7 +7,7 @@ namespace App\Http\Action;
 // use App\Http;
 // use Psr\Http\Message\ResponseFactoryInterface;
 use App\FeatureToggle\FeatureFlag;
-use App\Http\JsonResponse;
+use App\Http\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
