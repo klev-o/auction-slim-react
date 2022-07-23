@@ -29,6 +29,15 @@ abstract class WebTestCase extends TestCase
         parent::tearDown();
     }
 
+    protected static function html(string $method, string $path, array $body = []): ServerRequestInterface
+    {
+        $request = self::request($method, $path)
+            ->withHeader('Accept', 'text/html')
+            ->withHeader('Content-Type', 'application/x-www-form-urlencoded');
+        $request->getBody()->write(http_build_query($body));
+        return $request;
+    }
+
     protected static function json(string $method, string $path, array $body = []): ServerRequestInterface
     {
         $request = self::request($method, $path)
