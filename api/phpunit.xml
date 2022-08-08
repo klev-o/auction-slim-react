@@ -20,6 +20,8 @@
             <directory>src/Http/Test</directory>
             <directory>src/OAuth/Test</directory>
             <directory>src/Router/Test</directory>
+            <directory>src/Translator/Test</directory>
+            <directory>src/Validator/Test</directory>
         </testsuite>
         <testsuite name="functional">
             <directory>tests/Functional</directory>
@@ -35,7 +37,7 @@
             <directory>src/FeatureToggle/Test</directory>
             <directory>src/Frontend/Test</directory>
             <directory>src/Http/Test</directory>
-            <directory>src/Translator/Test</directory>
+
         </exclude>
     </coverage>
 

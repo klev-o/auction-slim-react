@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Test\Validator;
+namespace App\Validator\Test;
 
-use App\Http\Validator\ValidationException;
 use PHPUnit\Framework\TestCase;
+
 use Symfony\Component\Validator\ConstraintViolationList;
+use App\Validator\ValidationException;
 
 /**
  * @covers \ValidationException
