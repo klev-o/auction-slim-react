@@ -35,6 +35,7 @@
             <directory>src/FeatureToggle/Test</directory>
             <directory>src/Frontend/Test</directory>
             <directory>src/Http/Test</directory>
+            <directory>src/Translator/Test</directory>
         </exclude>
     </coverage>
 
