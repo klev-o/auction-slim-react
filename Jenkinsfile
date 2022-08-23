@@ -89,6 +89,14 @@ pipeline {
                 sh 'sleep 1' //make analyze
             }
         }
+        stage('Backup') {
+            when {
+                expression { return DOCKER_DIFF || env.GIT_DIFF_ROOT || env.GIT_DIFF_API }
+            }
+            steps {
+                sh 'make api-backup'
+            }
+        }
         stage('Test') {
             parallel {
                 stage('API') {
