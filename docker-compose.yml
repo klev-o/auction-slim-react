@@ -6,6 +6,8 @@ services:
       dockerfile: development/nginx/Dockerfile
     ports:
       - "80:80"
+    networks:
+      - traefik-public
 
   frontend:
     build:
@@ -150,6 +152,8 @@ services:
       context: cucumber/docker/development/node
     volumes:
       - ./cucumber:/app
+    networks:
+      - traefik-public
     network_mode: service:gateway
 
 secrets:
@@ -171,3 +175,7 @@ secrets:
 volumes:
   api-postgres:
   backup-storage:
+
+networks:
+  traefik-public:
+    name: traefik-public
