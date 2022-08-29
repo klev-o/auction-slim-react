@@ -8,16 +8,23 @@ services:
       --entryPoints.http.address=:80
     ports:
       - "80:80"
+    networks:
+      - traefik-public
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - traefik.enable=true
+      - traefik.docker.network=traefik-public
 
   frontend:
     build:
       context: frontend/docker/development/nginx
+    networks:
+      - traefik-public
+      - default
     labels:
       - traefik.enable=true
+      - traefik.docker.network=traefik-public
       - traefik.http.routers.frontend.rule=Host(`localhost`)
       - traefik.http.routers.frontend.entryPoints=http
       - traefik.http.services.frontend.loadBalancer.server.port=80
@@ -41,8 +48,12 @@ services:
       dockerfile: development/nginx/Dockerfile
     volumes:
       - ./api:/app
+    networks:
+      - traefik-public
+      - default
     labels:
       - traefik.enable=true
+      - traefik.docker.network=traefik-public
       - traefik.http.routers.api.rule=Host(`api.localhost`)
       - traefik.http.routers.api.entryPoints=http
       - traefik.http.services.api.loadBalancer.server.port=80
@@ -149,8 +160,12 @@ services:
 
   mailer:
     image: mailhog/mailhog
+    networks:
+      - traefik-public
+      - default
     labels:
       - traefik.enable=true
+      - traefik.docker.network=traefik-public
       - traefik.http.routers.mailer.rule=Host(`mailer.localhost`)
       - traefik.http.routers.mailer.entryPoints=http
       - traefik.http.services.mailer.loadBalancer.server.port=8025
@@ -164,9 +179,13 @@ services:
       - backup_aws_secret_access_key
     volumes:
       - backup-storage:/data
+    networks:
+      - traefik-public
+      - default
     entrypoint: sh -c 'mkdir -p /data/backup && docker-entrypoint.sh minio server /data --console-address ":80"'
     labels:
       - traefik.enable=true
+      - traefik.docker.network=traefik-public
       - traefik.http.routers.backup-storage.rule=Host(`backup-storage.localhost`)
       - traefik.http.routers.backup-storage.entryPoints=http
       - traefik.http.services.backup-storage.loadBalancer.server.port=80
