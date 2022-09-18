@@ -12,11 +12,11 @@ function request(url, method, data, headers) {
   const body =
     data !== null
       ? {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
       : { headers: {} }
 
   return fetch('/api' + url, {
