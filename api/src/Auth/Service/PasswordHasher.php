@@ -19,11 +19,7 @@ final class PasswordHasher
     public function hash(string $password): string
     {
         Assert::notEmpty($password);
-        $hash = password_hash($password, PASSWORD_ARGON2I, ['memory_cost' => $this->memoryCost]);
-        if ($hash === null) {
-            throw new RuntimeException('Unable to generate hash.');
-        }
-        return $hash;
+        return password_hash($password, PASSWORD_ARGON2I, ['memory_cost' => $this->memoryCost]);
     }
 
     public function validate(string $password, string $hash): bool

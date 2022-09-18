@@ -22,8 +22,7 @@ final class Fetcher
 
     public function fetch(Query $query): ?User
     {
-        /** @var Result $stmt */
-        $stmt = $this->connection->createQueryBuilder()
+        $result = $this->connection->createQueryBuilder()
             ->select([
                 'id',
                 'status',
@@ -41,7 +40,7 @@ final class Fetcher
          *     password_hash: ?string,
          * }|false
          */
-        $row = $stmt->fetchAssociative();
+        $row = $result->fetchAssociative();
 
         if ($row === false) {
             return null;
