@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Auth\Query\FindIdentityById;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Result;
 
 final class Fetcher
 {

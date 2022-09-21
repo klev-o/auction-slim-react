@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Auth\Service;
 
-use RuntimeException;
 use Webmozart\Assert\Assert;
 
 final class PasswordHasher

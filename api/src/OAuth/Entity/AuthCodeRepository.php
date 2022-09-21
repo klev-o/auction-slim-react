@@ -20,7 +20,6 @@ final class AuthCodeRepository implements AuthCodeRepositoryInterface
     private EntityManagerInterface $em;
 
     /**
-     * @param EntityManagerInterface $em
      * @param EntityRepository<AuthCode> $repo
      */
     public function __construct(EntityManagerInterface $em, EntityRepository $repo)
@@ -78,9 +77,9 @@ final class AuthCodeRepository implements AuthCodeRepositoryInterface
     private function exists(string $id): bool
     {
         return $this->repo->createQueryBuilder('t')
-                ->select('COUNT(t.identifier)')
-                ->andWhere('t.identifier = :identifier')
-                ->setParameter(':identifier', $id)
-                ->getQuery()->getSingleScalarResult() > 0;
+            ->select('COUNT(t.identifier)')
+            ->andWhere('t.identifier = :identifier')
+            ->setParameter(':identifier', $id)
+            ->getQuery()->getSingleScalarResult() > 0;
     }
 }

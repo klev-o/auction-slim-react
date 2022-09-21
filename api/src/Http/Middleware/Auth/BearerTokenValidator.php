@@ -19,14 +19,9 @@ use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class BearerTokenValidator implements AuthorizationValidatorInterface
+final class BearerTokenValidator implements AuthorizationValidatorInterface
 {
     use CryptTrait;
-
-    /**
-     * @var AccessTokenRepositoryInterface
-     */
-    private $accessTokenRepository;
 
     /**
      * @var CryptKey
@@ -34,47 +29,28 @@ class BearerTokenValidator implements AuthorizationValidatorInterface
     protected $publicKey;
 
     /**
+     * @var AccessTokenRepositoryInterface
+     */
+    private $accessTokenRepository;
+
+    /**
      * @var Configuration
      */
     private $jwtConfiguration;
 
-    /**
-     * @param AccessTokenRepositoryInterface $accessTokenRepository
-     */
     public function __construct(AccessTokenRepositoryInterface $accessTokenRepository)
     {
         $this->accessTokenRepository = $accessTokenRepository;
     }
 
     /**
-     * Set the public key
-     *
-     * @param CryptKey $key
+     * Set the public key.
      */
-    public function setPublicKey(CryptKey $key)
+    public function setPublicKey(CryptKey $key): void
     {
         $this->publicKey = $key;
 
         $this->initJwtConfiguration();
-    }
-
-    /**
-     * Initialise the JWT configuration.
-     */
-    private function initJwtConfiguration()
-    {
-        $this->jwtConfiguration = Configuration::forSymmetricSigner(
-            new Sha256(),
-            InMemory::plainText('empty', 'empty')
-        );
-
-        $this->jwtConfiguration->setValidationConstraints(
-            new StrictValidAt(new SystemClock(new DateTimeZone(\date_default_timezone_get()))),
-            new SignedWith(
-                new Sha256(),
-                InMemory::plainText($this->publicKey->getKeyContents(), $this->publicKey->getPassPhrase() ?? '')
-            )
-        );
     }
 
     /**
@@ -87,7 +63,7 @@ class BearerTokenValidator implements AuthorizationValidatorInterface
         }
 
         $header = $request->getHeader('authorization');
-        $jwt = \trim((string) \preg_replace('/^\s*Bearer\s/', '', $header[0]));
+        $jwt = trim((string)preg_replace('/^\s*Bearer\s/', '', $header[0]));
 
         try {
             // Attempt to parse the JWT
@@ -121,7 +97,26 @@ class BearerTokenValidator implements AuthorizationValidatorInterface
     }
 
     /**
-     * Convert single record arrays into strings to ensure backwards compatibility between v4 and v3.x of lcobucci/jwt
+     * Initialise the JWT configuration.
+     */
+    private function initJwtConfiguration(): void
+    {
+        $this->jwtConfiguration = Configuration::forSymmetricSigner(
+            new Sha256(),
+            InMemory::plainText('empty', 'empty')
+        );
+
+        $this->jwtConfiguration->setValidationConstraints(
+            new StrictValidAt(new SystemClock(new DateTimeZone(date_default_timezone_get()))),
+            new SignedWith(
+                new Sha256(),
+                InMemory::plainText($this->publicKey->getKeyContents(), $this->publicKey->getPassPhrase() ?? '')
+            )
+        );
+    }
+
+    /**
+     * Convert single record arrays into strings to ensure backwards compatibility between v4 and v3.x of lcobucci/jwt.
      *
      * @param mixed $aud
      *

@@ -10,6 +10,7 @@ use App\OAuth\Generator\AccessTokenGenerator;
 use App\OAuth\Generator\Params;
 use DateTimeImmutable;
 use League\OAuth2\Server\CryptKey;
+
 use function App\env;
 
 final class AuthHeader

@@ -8,6 +8,7 @@ use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
+
 use function App\env;
 
 require __DIR__ . '/../vendor/autoload.php';

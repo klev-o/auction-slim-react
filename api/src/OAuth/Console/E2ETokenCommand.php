@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\OAuth\Console;
 
-
 use App\OAuth\Entity\Scope;
 use App\OAuth\Generator\AccessTokenGenerator;
 use App\OAuth\Generator\Params;

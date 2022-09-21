@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Validator\Test;
 
-use PHPUnit\Framework\TestCase;
-
-use Symfony\Component\Validator\ConstraintViolationList;
 use App\Validator\ValidationException;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Validator\ConstraintViolationList;
 
 /**
  * @covers \ValidationException

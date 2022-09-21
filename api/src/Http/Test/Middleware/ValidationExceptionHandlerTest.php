@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Test\Middleware;
 
 use App\Http\Middleware\ValidationExceptionHandler;
+use App\Validator\ValidationException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,7 +14,6 @@ use Slim\Psr7\Factory\ResponseFactory;
 use Slim\Psr7\Factory\ServerRequestFactory;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
-use App\Validator\ValidationException;
 
 /**
  * @covers \ValidationExceptionHandler

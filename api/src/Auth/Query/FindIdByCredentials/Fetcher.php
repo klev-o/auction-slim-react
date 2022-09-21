@@ -7,7 +7,6 @@ namespace App\Auth\Query\FindIdByCredentials;
 use App\Auth\Entity\User\Status;
 use App\Auth\Service\PasswordHasher;
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Result;
 
 final class Fetcher
 {

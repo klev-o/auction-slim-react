@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\OAuth;
 use App\Console;
+use App\OAuth;
 use Doctrine\Migrations;
 use Doctrine\ORM\Tools\Console\Command\ValidateSchemaCommand;
 

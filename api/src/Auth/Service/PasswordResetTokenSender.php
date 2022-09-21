@@ -15,7 +15,7 @@ final class PasswordResetTokenSender
     private MailerInterface $mailer;
     private Environment $twig;
 
-    public function __construct(MailerInterface  $mailer, Environment $twig)
+    public function __construct(MailerInterface $mailer, Environment $twig)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
