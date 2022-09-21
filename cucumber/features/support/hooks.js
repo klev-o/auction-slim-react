@@ -1,7 +1,9 @@
 const puppeteer = require('puppeteer')
-const { Before, After, Status } = require('@cucumber/cucumber')
+const { Before, After, Status, setDefaultTimeout } = require('@cucumber/cucumber')
 
-Before(async function () {
+setDefaultTimeout(10 * 1000)
+
+Before({ timeout: 30000 }, async function () {
   this.browser = await puppeteer.launch({
     args: [
       '--disable-dev-shm-usage',
@@ -13,14 +15,18 @@ Before(async function () {
 })
 
 After(async function (testCase) {
-  if (testCase.result.status === Status.FAILED) {
-    const name = testCase.pickle.uri.replace(/^\/app\/features\//, '').replace(/\//g, '_') +
-      '-' +
-      testCase.pickle.name.toLowerCase().replace(/[^\w]/g, '_')
-    await this.page.screenshot({ path: 'var/' + name + '.png', fullPage: true })
+  if (this.page) {
+    if (testCase.result.status === Status.FAILED) {
+      const name = testCase.pickle.uri.replace(/^\/app\/features\//, '').replace(/\//g, '_') +
+        '-' +
+        testCase.pickle.name.toLowerCase().replace(/[^\w]/g, '_')
+      await this.page.screenshot({ path: 'var/' + name + '.png', fullPage: true })
+    }
+    await this.page.close()
+  }
+  if (this.browser) {
+    await this.browser.close()
     // const screenShot = await this.page.screenshot({ encoding: 'base64', fullPage: true })
     // this.attach(screenShot, 'image/png')
   }
-  await this.page.close()
-  await this.browser.close()
 })
