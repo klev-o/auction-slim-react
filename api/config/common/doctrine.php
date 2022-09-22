@@ -10,7 +10,9 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
+use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\Setup;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
@@ -23,7 +25,7 @@ return [
         /**
          * @psalm-suppress MixedArrayAccess
          * @var array{
-         *     metadata_dirs:array,
+         *     metadata_dirs:string[],
          *     dev_mode:bool,
          *     proxy_dir:string,
          *     cache_dir:?string,
@@ -41,8 +43,7 @@ return [
                 DoctrineProvider::wrap(new ArrayAdapter())
         );
 
-        $driverImpl = $config->newDefaultAnnotationDriver($settings['metadata_dirs'], false);
-        $config->setMetadataDriverImpl($driverImpl);
+        $config->setMetadataDriverImpl(new AttributeDriver($settings['metadata_dirs']));
 
         $config->setNamingStrategy(new UnderscoreNamingStrategy());
 
