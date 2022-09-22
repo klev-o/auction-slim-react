@@ -28,7 +28,7 @@
     "symfony/config": "^5.4",
     "symfony/console": "^5.4",
     "symfony/mailer": "^6.0",
-    "symfony/translation": "^5.4",
+    "symfony/translation": "^6.0",
     "symfony/validator": "^5.4",
     "twig/twig": "^3.3",
     "webmozart/assert": "^1.10"
