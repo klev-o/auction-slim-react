@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09327162a440edd08963e429b5150410",
+    "content-hash": "5feba4ed415f26840722990300379354",
     "packages": [
         {
             "name": "brick/math",
@@ -4795,35 +4795,33 @@
         },
         {
             "name": "symfony/config",
-            "version": "v5.4.11",
+            "version": "v6.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "ec79e03125c1d2477e43dde8528535d90cc78379"
+                "reference": "a0645dc585d378b73c01115dd7ab9348f7d40c85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/ec79e03125c1d2477e43dde8528535d90cc78379",
-                "reference": "ec79e03125c1d2477e43dde8528535d90cc78379",
+                "url": "https://api.github.com/repos/symfony/config/zipball/a0645dc585d378b73c01115dd7ab9348f7d40c85",
+                "reference": "a0645dc585d378b73c01115dd7ab9348f7d40c85",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.1",
                 "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/filesystem": "^4.4|^5.0|^6.0",
-                "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-php80": "^1.16",
-                "symfony/polyfill-php81": "^1.22"
+                "symfony/filesystem": "^5.4|^6.0",
+                "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
-                "symfony/finder": "<4.4"
+                "symfony/finder": "<5.4"
             },
             "require-dev": {
-                "symfony/event-dispatcher": "^4.4|^5.0|^6.0",
-                "symfony/finder": "^4.4|^5.0|^6.0",
-                "symfony/messenger": "^4.4|^5.0|^6.0",
+                "symfony/event-dispatcher": "^5.4|^6.0",
+                "symfony/finder": "^5.4|^6.0",
+                "symfony/messenger": "^5.4|^6.0",
                 "symfony/service-contracts": "^1.1|^2|^3",
-                "symfony/yaml": "^4.4|^5.0|^6.0"
+                "symfony/yaml": "^5.4|^6.0"
             },
             "suggest": {
                 "symfony/yaml": "To use the yaml reference dumper"
@@ -4854,7 +4852,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v5.4.11"
+                "source": "https://github.com/symfony/config/tree/v6.1.3"
             },
             "funding": [
                 {
@@ -4870,7 +4868,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-20T13:00:38+00:00"
+            "time": "2022-07-20T15:00:40+00:00"
         },
         {
             "name": "symfony/console",
@@ -8094,33 +8092,33 @@
         },
         {
             "name": "overtrue/phplint",
-            "version": "4.3.0",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/phplint.git",
-                "reference": "3b365ece7eb4620a55062a115ffbec75227c06a7"
+                "reference": "42ddcab45454e0cf3f1522340fc22f3875c4c74f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/phplint/zipball/3b365ece7eb4620a55062a115ffbec75227c06a7",
-                "reference": "3b365ece7eb4620a55062a115ffbec75227c06a7",
+                "url": "https://api.github.com/repos/overtrue/phplint/zipball/42ddcab45454e0cf3f1522340fc22f3875c4c74f",
+                "reference": "42ddcab45454e0cf3f1522340fc22f3875c4c74f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "n98/junit-xml": "1.1.0",
-                "php": "^8.0",
-                "symfony/console": "^5.3.11 || ^6.0",
-                "symfony/finder": "^5.3.7 || ^6.0",
-                "symfony/process": "^5.3.12 || ^6.0",
-                "symfony/yaml": "^5.3.11 || ^6.0"
+                "php": "^8.1",
+                "symfony/console": "^5.0 || ^6.0",
+                "symfony/finder": "^6.0",
+                "symfony/process": "^6.0",
+                "symfony/yaml": "^6.0"
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4",
                 "brainmaestro/composer-git-hooks": "^2.8.5",
                 "friendsofphp/php-cs-fixer": "^3.4.0",
                 "jakub-onderka/php-console-highlighter": "^0.4",
-                "jetbrains/phpstorm-stubs": "^2021.3"
+                "jetbrains/phpstorm-stubs": "^2021.3 || ^2022.0"
             },
             "bin": [
                 "bin/phplint"
@@ -8157,7 +8155,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/phplint/issues",
-                "source": "https://github.com/overtrue/phplint/tree/4.3.0"
+                "source": "https://github.com/overtrue/phplint/tree/5.3.0"
             },
             "funding": [
                 {
@@ -8165,7 +8163,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-12T07:39:25+00:00"
+            "time": "2022-07-12T07:42:45+00:00"
         },
         {
             "name": "phar-io/manifest",
