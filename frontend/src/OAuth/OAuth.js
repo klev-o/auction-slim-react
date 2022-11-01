@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { AlertError } from '../Alert'
 import useAuth from './Provider/useAuth'
 
-
 function OAuth() {
   const { error, loading } = useAuth()
 

@@ -1,6 +1,8 @@
 version: "3.9"
+
 services:
   traefik:
+    container_name: traefik
     image: traefik:2.4
     command:
       --providers.docker=true
@@ -38,6 +40,7 @@ services:
       context: frontend/docker/development/node
     environment:
       WDS_SOCKET_PORT: 0
+      REACT_APP_AUTH_URL: http://api.localhost
     volumes:
       - ./frontend:/app
     command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && yarn start"
@@ -48,6 +51,7 @@ services:
       context: frontend/docker/development/node
     volumes:
       - ./frontend:/app
+
   api:
     build:
       context: api/docker
@@ -82,7 +86,6 @@ services:
       MAILER_PASSWORD_FILE: /run/secrets/api_mailer_password
       MAILER_FROM_EMAIL: mail@app.test
       FRONTEND_URL: http://localhost
-
       SENTRY_DSN_FILE: /run/secrets/sentry_dsn
       JWT_ENCRYPTION_KEY_FILE: /run/secrets/jwt_encryption_key
       JWT_PUBLIC_KEY_PATH: /run/secrets/jwt_public_key
@@ -104,7 +107,6 @@ services:
     environment:
       APP_ENV: dev
       APP_DEBUG: 1
-      PHP_IDE_CONFIG: serverName=API
       DB_HOST: api-postgres
       DB_USER: app
       DB_PASSWORD_FILE: /run/secrets/api_db_password
@@ -186,7 +188,6 @@ services:
     networks:
       - traefik-public
       - default
-    entrypoint: sh -c 'mkdir -p /data/backup && docker-entrypoint.sh minio server /data --console-address ":80"'
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-public
@@ -199,9 +200,9 @@ services:
       context: cucumber/docker/development/node
     volumes:
       - ./cucumber:/app
-    networks:
-      - traefik-public
-    network_mode: service:traefik
+    depends_on:
+      - traefik
+    network_mode: container:traefik
 
 secrets:
   api_db_password:

@@ -15,7 +15,6 @@ function AuthProvider({
   redirectPath,
   children,
 }) {
-
   const [isAuthenticated, setIsAuthenticated] = useState(
     window.localStorage.getItem('auth.tokens') !== null
   )
