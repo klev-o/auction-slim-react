@@ -13,7 +13,7 @@
         "@cucumber/cucumber": "^8.2.1",
         "chai": "^4.2.0",
         "cucumber-html-reporter": "^5.2.0",
-        "puppeteer": "^15.5.0"
+        "puppeteer": "^19.2.2"
     },
     "devDependencies": {
         "eslint": "^8.15.0",
