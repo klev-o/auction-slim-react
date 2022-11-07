@@ -12,6 +12,8 @@ services:
 
   frontend:
     image: ${REGISTRY}/auction-frontend:${IMAGE_TAG}
+    environment:
+      REACT_APP_AUTH_URL: https://api.demo-auction.ru
     networks:
       - traefik-public
       - default
@@ -136,7 +138,7 @@ services:
       MAILER_USERNAME: ${API_MAILER_USERNAME}
       MAILER_PASSWORD_FILE: /run/secrets/api_mailer_password
       MAILER_FROM_EMAIL: ${API_MAILER_FROM_EMAIL}
-      FRONTEND_URL: https://demo-auction.deworker.pro
+      FRONTEND_URL: https://demo-auction.ru
       SENTRY_DSN_FILE: /run/secrets/sentry_dsn
       JWT_ENCRYPTION_KEY_FILE: /run/secrets/jwt_encryption_key
       JWT_PUBLIC_KEY_PATH: /run/secrets/jwt_public_key
