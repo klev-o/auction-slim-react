@@ -6,8 +6,8 @@
         "e2e": "cucumber-js --tags 'not @wip' --parallel 2",
         "e2e-ci": "cucumber-js --tags 'not @wip' --parallel 2 --retry 2",
         "report": "node reporter.js",
-        "lint": "eslint --ext .js,.ts features",
-        "lint-fix": "eslint --fix --ext .js,.ts features"
+        "lint": "eslint --ext .ts features",
+        "lint-fix": "eslint --fix --ext .ts features"
     },
     "dependencies": {
         "@cucumber/cucumber": "^8.2.1",
