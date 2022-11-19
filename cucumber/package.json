@@ -16,6 +16,7 @@
         "puppeteer": "^19.2.2"
     },
     "devDependencies": {
+        "@types/chai": "^4.3.4",
         "@typescript-eslint/eslint-plugin": "^5.43.0",
         "@typescript-eslint/parser": "^5.43.0",
         "eslint": "^8.15.0",
